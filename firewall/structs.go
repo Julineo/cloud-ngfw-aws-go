@@ -48,6 +48,8 @@ type Info struct {
 	EndpointServiceName          string          `json:"EndpointServiceName,omitempty"`
 	AutomaticUpgradeAppIdVersion bool            `json:"AutomaticUpgradeAppIdVersion,omitempty"`
 	SubnetMappings               []SubnetMapping `json:"SubnetMappings,omitempty"`
+	LinkId                       string          `json:"LinkId,omitempty"`
+	LinkStatus                   string          `json:"LinkStatus,omitempty"`
 	Tags                         []tag.Details   `json:"Tags,omitempty"`
 	UpdateToken                  string          `json:"UpdateToken,omitempty"`
 }
@@ -73,6 +75,15 @@ type UpdateDescriptionInput struct {
 	Firewall    string `json:"-"`
 	AccountId   string `json:"AccountId,omitempty"`
 	Description string `json:"Description,omitempty"`
+	UpdateToken string `json:"UpdateToken,omitempty"`
+}
+
+// V1 update link Id.
+
+type UpdateLinkIdInput struct {
+	Firewall    string `json:"-"`
+	AccountId   string `json:"AccountId,omitempty"`
+	LinkId      string `json:"LinkId,omitempty"`
 	UpdateToken string `json:"UpdateToken,omitempty"`
 }
 
