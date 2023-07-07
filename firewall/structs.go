@@ -87,6 +87,13 @@ type UpdateLinkIdInput struct {
 	UpdateToken string `json:"UpdateToken,omitempty"`
 }
 
+// V1 delete link Id.
+
+type DeleteLinkIdInput struct {
+	Firewall  string `json:"-"`
+	AccountId string `json:"AccountId,omitempty"`
+}
+
 // V1 update subnet mappings.
 
 type UpdateSubnetMappingsInput struct {

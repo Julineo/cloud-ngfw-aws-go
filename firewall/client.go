@@ -310,7 +310,11 @@ func (c *Client) UpdateLinkId(ctx context.Context, input UpdateLinkIdInput) erro
 	c.client.Log(http.MethodPut, "updating firewall link: %s", input.Firewall)
 
 	if input.LinkId == "" || input.LinkId == "None" {
-		err := c.DeleteLinkId(ctx, input)
+		v := DeleteLinkIdInput{
+			Firewall:  input.Firewall,
+			AccountId: input.AccountId,
+		}
+		err := c.DeleteLinkId(ctx, v)
 		return err
 	}
 
@@ -328,7 +332,7 @@ func (c *Client) UpdateLinkId(ctx context.Context, input UpdateLinkIdInput) erro
 }
 
 // DeleteLinkId deletes the link id of the firewall.
-func (c *Client) DeleteLinkId(ctx context.Context, input UpdateLinkIdInput) error {
+func (c *Client) DeleteLinkId(ctx context.Context, input DeleteLinkIdInput) error {
 	c.client.Log(http.MethodDelete, "deleting firewall link: %s", input.Firewall)
 
 	_, err := c.client.Communicate(
